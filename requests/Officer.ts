@@ -3,7 +3,7 @@ import fetch from "isomorphic-unfetch";
 import { Officer } from 'utils/types';
 
 export const getOfficers = (officer: Officer) =>
-  fetch("https://mindversity-website-test-2z20mnzro.vercel.app/api/officer/getOfficers", {
+  fetch("http://localhost:3000/api/officer/getOfficers", {
     method: "POST",
     mode: "same-origin",
     headers: {
@@ -24,7 +24,7 @@ export const getOfficers = (officer: Officer) =>
 
 
 export const addOfficer = (form: FormData) =>
-  fetch("https://mindversity-website-test-2z20mnzro.vercel.app/api/officer/addOfficer", {
+  fetch("http://localhost:3000/api/officer/addOfficer", {
     method: "POST",
     mode: "same-origin",
     body: form
@@ -42,7 +42,7 @@ export const addOfficer = (form: FormData) =>
 
 
 export const deleteOfficer = (officer: Officer) =>
-  fetch("https://mindversity-website-test-2z20mnzro.vercel.app/api/officer/deleteOfficer", {
+  fetch("http://localhost:3000/api/officer/deleteOfficer", {
     method: "POST",
     mode: "same-origin",
     body: JSON.stringify(officer)
