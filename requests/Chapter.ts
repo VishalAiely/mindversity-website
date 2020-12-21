@@ -3,7 +3,7 @@ import fetch from "isomorphic-unfetch";
 import { Chapter } from 'utils/types'
 
 export const getChapters = (chapter: Chapter) =>
-  fetch("https://mindversity-website-test-2z20mnzro.vercel.app/api/chapter/getChapters", {
+  fetch("http://localhost:3000/api/chapter/getChapters", {
     method: "POST",
     mode: "same-origin",
     headers: {
@@ -23,7 +23,7 @@ export const getChapters = (chapter: Chapter) =>
     });
 
 export const addChapter = (chapterFormData: FormData) =>
-    fetch("https://mindversity-website-test-2z20mnzro.vercel.app/api/chapter/addChapter", {
+    fetch("http://localhost:3000/api/chapter/addChapter", {
       method: "POST",
       mode: "same-origin",
       body: chapterFormData
@@ -41,7 +41,7 @@ export const addChapter = (chapterFormData: FormData) =>
     
 
 export const updateChapter = (chapterFormData: FormData) =>
-  fetch("https://mindversity-website-test-2z20mnzro.vercel.app/api/chapter/updateChapter", {
+  fetch("http://localhost:3000/api/chapter/updateChapter", {
     method: "PUT",
     mode: "same-origin",
     body: chapterFormData
