@@ -8,7 +8,7 @@ import { ContentfulImage, JournalEntry } from 'utils/types';
 
 // assuming we only want to show reviewed entries by default
 export const getEntries = () =>
-  fetch("http://localhost:3000/api/journal/getByReviewStatus?reviewed=true", {
+  fetch("https://mindversity.vercel.app/api/journal/getByReviewStatus?reviewed=true", {
     method: "GET",
     mode: "same-origin",
     headers: {
@@ -25,7 +25,7 @@ export const getEntries = () =>
 
 export const getEntriesByType = async (type: any) => {
   if (!type) return await getEntries()
-  return fetch(`http://localhost:3000/api/journal/getByType?type=${type}`, {
+  return fetch(`https://mindversity.vercel.app/api/journal/getByType?type=${type}`, {
     method: "GET",
     mode: "same-origin",
     headers: {
@@ -42,7 +42,7 @@ export const getEntriesByType = async (type: any) => {
 }
 
 export const getPostById = async (id: any) => (
-  fetch(`http://localhost:3000/api/journal/getById?id=${id}`, {
+  fetch(`https://mindversity.vercel.app/api/journal/getById?id=${id}`, {
     method: "GET",
     mode: "same-origin",
     headers: {
