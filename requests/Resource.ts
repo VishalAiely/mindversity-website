@@ -2,7 +2,7 @@ import fetch from "isomorphic-unfetch"
 import { Resource } from "utils/types";
 
 export const getResources = async (resource: Resource) => 
-    fetch('https://mindversity-website-test-2z20mnzro.vercel.app/api/resource/getResource', {
+    fetch('http://localhost:3000/api/resource/getResource', {
         method: "POST",
         mode: "same-origin",
         headers: {
@@ -21,7 +21,7 @@ export const getResources = async (resource: Resource) =>
 
 
 export const addResources = async (resource: Resource) => {
-    fetch('https://mindversity-website-test-2z20mnzro.vercel.app/api/resource/addResource', {
+    fetch('http://localhost:3000/api/resource/addResource', {
         method: "POST",
         mode: "same-origin",
         headers: {
@@ -39,7 +39,7 @@ export const addResources = async (resource: Resource) => {
     })
 }
 export const deleteResources = async (resource: Resource) => {
-    fetch('https://mindversity-website-test-2z20mnzro.vercel.app/api/resource/deleteResource', {
+    fetch('http://localhost:3000/api/resource/deleteResource', {
         method: "POST",
         mode: "same-origin",
         headers: {
@@ -58,7 +58,7 @@ export const deleteResources = async (resource: Resource) => {
 }
 
 export const updateResources = async (resource: Resource) => {
-    fetch('https://mindversity-website-test-2z20mnzro.vercel.app/api/resource/updateResource', {
+    fetch('http://localhost:3000/api/resource/updateResource', {
         method: "POST",
         mode: "same-origin",
         headers: {
