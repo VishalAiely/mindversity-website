@@ -1,12 +1,7 @@
 const prod = process.env.NODE_ENV === "production";
 
 export default {
-<<<<<<< HEAD
-    baseUrl: prod ? "https://mindversity.vercel.app" : "http://localhost:3000",
-    CONTENTFUL_IMAGE_LIMIT: 20*1000*1000, // 20 MB
-=======
     baseUrl: prod ? "http://localhost:3000" : "http://localhost:3000",
->>>>>>> be7518b4982b52002ff88c0581b54c57709c5297
     dbUrl: process.env.MONGO_DB ?? "mongodb://localhost:27017",
     pages: {
         index: "/",
