@@ -88,13 +88,6 @@ const Navigation: React.FC<Props> = ({ admin }) => {
                             </button>
                         </div>
                     </div>
-                    <div className={style.navLowerLinks}>
-                        <div className={style.navLowerCol}>
-                            <button className={style.signoutBtn} onClick={handleSignout}>
-                                Sign Out
-                            </button>
-                        </div>
-                    </div>
                     <div className={style.navLowerText}>
                         A Global Effort to Better BIPOC Student Mental Health Care.
                     </div>
