@@ -11,6 +11,8 @@ import errors from "utils/errors";
 import Head from "next/head";
 import globals from "utils/globals";
 import { useRouter } from "next/router";
+import Custom404 from "pages/404";
+import Loading from "components/Loading";
 
 // When routing here we have a chapter name we can get from the url name
 // We can get that param with useRouter(), but its also given in the context
@@ -24,11 +26,11 @@ interface Props {
 const ChapterPage: NextPage<Props> = ({ chapter, officers, resources }) => {
     const router = useRouter();
     if (router.isFallback) {
-        return <div>Loading...</div>;
+        return <Loading />;
     }
 
     if (!chapter) {
-        return <div>No Chapter</div>;
+        return <Custom404 />;
     }
 
     //Replace any underscores in the chapter name with spaces
@@ -51,7 +53,8 @@ const ChapterPage: NextPage<Props> = ({ chapter, officers, resources }) => {
     return (
         <div>
             <Head>
-                <title>{cleanName} Chapter | MindVersity | A peer mental health network.</title>
+                <title>{cleanName} Chapter | MindVersity - A peer mental health network.</title>
+                <meta name="description" content={chapter ?  `${chapter.description?.substring(0,157).concat("...")}` : "A chapter at MindVersity."}/>
                 <link rel="icon" href="../favicon.ico" />
             </Head>
 
@@ -284,6 +287,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     } catch (error) {
         return {
             props: {},
+            revalidate: globals.revalidate.chapter,
         };
     }
 }

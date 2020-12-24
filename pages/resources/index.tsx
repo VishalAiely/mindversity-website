@@ -5,6 +5,10 @@ import Header from "components/Header";
 import Footer from "components/Footer";
 import { Resource } from "utils/types";
 import { getResources } from "server/actions/Resource";
+import globals from "utils/globals";
+import Custom404 from "pages/404";
+import Loading from 'components/Loading';
+import { useRouter } from "next/router";
 
 interface Props {
     resources: Resource[];
@@ -60,10 +64,20 @@ const Resources: NextPage<Props> = ({ resources }) => {
     const mindversityLinks = getLinks("mindversity", mindversityCount);
     const helpLinks = getLinks("help", helpCount);
 
+    const router = useRouter();
+    if (router.isFallback) {
+        return <Loading />;
+    }
+    
+    if (!resources) {
+        return <Custom404 />;
+    }
+    
     return (
         <main className="container">
             <Head>
-                <title>Resources | MindVersity</title>
+                <title>Resources | MindVersity - A peer mental health network</title>
+                <meta name="description" content="MindVersity offers a list of mental health resources available for everyone to use."/>
             </Head>
 
             <Header />
@@ -234,14 +248,22 @@ const Resources: NextPage<Props> = ({ resources }) => {
 };
 
 export async function getStaticProps() {
-    // Get all resources, divide into categories later.
-    const resources: Resource[] = await getResources({ chapter: "national" });
+    try {
+        // Get all resources, divide into categories later.
+        const resources: Resource[] = await getResources({ chapter: "national" });
 
-    return {
-        props: {
-            resources: JSON.parse(JSON.stringify(resources)) as Resource[],
-        },
-    };
+        return {
+            props: {
+                resources: JSON.parse(JSON.stringify(resources)) as Resource[],
+            },
+            revalidate: globals.revalidate.resources,
+        };
+    } catch(error) {
+        return {
+            props: {},
+            revalidate: globals.revalidate.resources,
+        };
+    }
 }
 
 export default Resources;
