@@ -3,9 +3,14 @@ import Head from "next/head";
 import Footer from "components/Footer";
 import Header from "components/Header";
 import CreateJournalEntry from "components/CreateJournalEntry";
+
 const Create: NextPage = () => {
     return (
         <main>
+            <Head>
+                <title>Create A New Journal Entry | MindVersity - A peer mental health network.</title>
+                <meta name="description" content="Let your message be heard by anonymously creating a journal entry in one of three categories." />
+            </Head>
             <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css" />
             <Header />
             <CreateJournalEntry />
